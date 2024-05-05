@@ -12,6 +12,7 @@ class_name ResourceNode
 @export var launch_duration : float = 0.25
 
 @onready var level_parent = get_parent()
+@onready var canvas_item : Sprite2D = $Sprite2D
 
 var is_harvesting = false
 
@@ -33,10 +34,10 @@ func _ready():
 	current_durability = durability
 
 func _on_interact_enter():
-	print_debug("Highlight on")
+	canvas_item.material.set_shader_parameter("onoff", 1)
 
 func _on_interact_exit():
-	print_debug("Highlight off")
+	canvas_item.material.set_shader_parameter("onoff", 0)
 
 func _on_interact_start():
 	if not is_harvesting:

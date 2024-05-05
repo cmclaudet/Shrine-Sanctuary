@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blnb3f2s67g72"]
+[gd_scene load_steps=15 format=3 uid="uid://blnb3f2s67g72"]
 
 [ext_resource type="PackedScene" uid="uid://bvaqbkcnyrelv" path="res://Characters/player.tscn" id="1_ux72s"]
 [ext_resource type="PackedScene" uid="uid://bepy0uxcgxxeu" path="res://Objects/Resources/resource_node_rock_tall.tscn" id="2_fhmkd"]
@@ -9,8 +9,23 @@
 [ext_resource type="PackedScene" uid="uid://csewi00bgdghf" path="res://Objects/Resources/resource_node_tree_pine.tscn" id="6_1scwa"]
 [ext_resource type="PackedScene" uid="uid://yq3jhf0ic4jq" path="res://Objects/Doodads/cactus_1.tscn" id="8_p1hpn"]
 [ext_resource type="PackedScene" uid="uid://dkngxk3p7o3xb" path="res://Objects/Doodads/cactus_2.tscn" id="9_sxgm6"]
+[ext_resource type="Shader" path="res://Objects/Resources/outline.gdshader" id="10_5lc2y"]
 [ext_resource type="PackedScene" uid="uid://dsn7jeiwnvoe" path="res://Objects/Resources/resource_node_tree_desert_savanna.tscn" id="10_5uart"]
 [ext_resource type="PackedScene" uid="uid://dqpdjbrb001cx" path="res://Objects/Resources/resource_node_tree_dark.tscn" id="11_uei3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34dnv"]
+resource_local_to_scene = true
+shader = ExtResource("10_5lc2y")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlp8b"]
+resource_local_to_scene = true
+shader = ExtResource("10_5lc2y")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
@@ -94,9 +109,11 @@ position = Vector2(228, 160)
 position = Vector2(143, 149)
 
 [node name="Cactus1" parent="TileMap/WorldObjects" instance=ExtResource("8_p1hpn")]
+material = SubResource("ShaderMaterial_34dnv")
 position = Vector2(83, 175)
 
 [node name="Cactus2" parent="TileMap/WorldObjects" instance=ExtResource("8_p1hpn")]
+material = SubResource("ShaderMaterial_vlp8b")
 position = Vector2(264, 184)
 
 [node name="Cactus_Type2" parent="TileMap/WorldObjects" instance=ExtResource("9_sxgm6")]

@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkngxk3p7o3xb"]
+[gd_scene load_steps=5 format=3 uid="uid://dkngxk3p7o3xb"]
 
+[ext_resource type="Shader" path="res://Objects/Resources/outline.gdshader" id="1_c1873"]
 [ext_resource type="Texture2D" uid="uid://c6iku02lx5iir" path="res://Art/GatherersExterior/Objects/Desert/cactus_2.png" id="1_i0qwf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ym7n"]
+shader = ExtResource("1_c1873")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ln27o"]
 radius = 6.0
 height = 16.0
 
 [node name="Cactus_Type2" type="Sprite2D"]
+material = SubResource("ShaderMaterial_3ym7n")
 texture = ExtResource("1_i0qwf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

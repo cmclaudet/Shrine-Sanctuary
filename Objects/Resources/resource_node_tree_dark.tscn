@@ -1,10 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqpdjbrb001cx"]
+[gd_scene load_steps=9 format=3 uid="uid://dqpdjbrb001cx"]
 
 [ext_resource type="Script" path="res://Objects/Resources/ResourceNode.gd" id="1_73wnj"]
 [ext_resource type="Resource" uid="uid://ds7ax48gnanmt" path="res://Objects/Resources/Types/axeable.tres" id="2_2tipc"]
 [ext_resource type="PackedScene" uid="uid://chql2hjpqv6ra" path="res://Objects/Pickups/pickup_wood_dark.tscn" id="3_n7d65"]
 [ext_resource type="PackedScene" uid="uid://c1i6ma3cj1mcm" path="res://Effects/depleted_resources_explosion.tscn" id="4_p5jea"]
+[ext_resource type="Shader" path="res://Objects/Resources/outline.gdshader" id="5_eufw5"]
 [ext_resource type="Texture2D" uid="uid://dow5y2lf4lxiq" path="res://Art/GatherersExterior/Objects/Dark/tree_dark_pink_small.png" id="5_mbifl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ev8re"]
+resource_local_to_scene = true
+shader = ExtResource("5_eufw5")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wuuyo"]
 radius = 6.0
@@ -17,6 +25,7 @@ pickup_type = ExtResource("3_n7d65")
 depleted_effect = ExtResource("4_p5jea")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ev8re")
 texture = ExtResource("5_mbifl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
