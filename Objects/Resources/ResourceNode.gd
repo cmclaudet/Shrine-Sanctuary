@@ -3,8 +3,8 @@ extends InteractiveNode
 class_name ResourceNode
 
 @export var node_types : Array[ResourceNodeType]
-@export var min_resources : int = 1
-@export var max_resources : int = 2
+@export var min_resources : int = 3
+@export var max_resources : int = 5
 @export var durability : int = 3
 @export var pickup_type : PackedScene
 @export var depleted_effect : PackedScene
@@ -50,12 +50,11 @@ func try_harvest():
 		harvest(1)
 
 func harvest(amount : int):
-	print_debug("Harvested " + str(amount) + " resources")
 	current_durability -= amount
 
 func spawn_resource():
 	var resource_count : int = randi_range(min_resources, max_resources)
-
+	print_debug("Spawning " + str(resource_count) + " resources")
 	for i in range(resource_count):
 		spawn_pickup()
 

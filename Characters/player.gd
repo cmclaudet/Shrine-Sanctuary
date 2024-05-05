@@ -15,7 +15,6 @@ func _ready():
 	
 func _process(_delta):
 	if(Input.is_action_just_pressed("use")):
-		print_debug("Swing started")
 		animation_tree["parameters/conditions/swing"] = true
 		animation_tree["parameters/conditions/idle"] = false
 		can_move = false
@@ -23,7 +22,6 @@ func _process(_delta):
 	elif (Input.is_action_pressed("use")):
 		interaction_area2D.interact_hold()
 	elif (Input.is_action_just_released("use")):
-		print_debug("Swing ended")
 		animation_tree["parameters/conditions/swing"] = false
 		animation_tree["parameters/conditions/idle"] = true
 		can_move = true
@@ -51,7 +49,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_hand_equip_on_tool_contact_signal(equipped_item: EquipableItem) -> void:
-	print_debug("tool contact: " + equipped_item.name)
 	if(can_harvest_closest_interactable(equipped_item)):
 		interaction_area2D.closestInteractable.try_harvest()
 
@@ -61,7 +58,6 @@ func can_harvest_closest_interactable(equipped_item: EquipableItem) -> bool:
 		and equipped_item is HarvestingTool
 
 	if(can_harvest):
-		print_debug("can harvest")
 		return are_node_types_compatible(interaction_area2D.closestInteractable.node_types, equipped_item.effected_types)
 	else:
 		return false

@@ -74,19 +74,15 @@ position = Vector2(185, 82)
 
 [node name="ResourceNode_PineTree" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
 position = Vector2(160, 10)
-starting_resources = 1
 
 [node name="ResourceNode_PineTree4" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
 position = Vector2(147, 99)
-starting_resources = 1
 
 [node name="ResourceNode_PineTree5" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
 position = Vector2(-20, 92)
-starting_resources = 1
 
 [node name="ResourceNode_PineTree6" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
 position = Vector2(-3, -22)
-starting_resources = 1
 
 [node name="ResourceNode_SavannaTree" parent="TileMap/WorldObjects" instance=ExtResource("10_5uart")]
 position = Vector2(124, 197)

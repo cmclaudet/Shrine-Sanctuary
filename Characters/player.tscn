@@ -1558,5 +1558,6 @@ script = ExtResource("14_sk5qv")
 position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_7xe1r")
 
+[connection signal="on_tool_contact_signal" from="HandEquip" to="." method="_on_hand_equip_on_tool_contact_signal"]
 [connection signal="body_entered" from="InteractionArea2D" to="InteractionArea2D" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea2D" to="InteractionArea2D" method="_on_body_exited"]
