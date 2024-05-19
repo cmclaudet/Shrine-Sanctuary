@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Placeable" load_steps=6 format=3 uid="uid://btueq54ga88nw"]
+
+[ext_resource type="Texture2D" uid="uid://b4y1mmcvsfyrx" path="res://Art/Gif/original_atlas.png" id="1_0jokv"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/placeable/placeable.gd" id="1_k8osi"]
+[ext_resource type="PackedScene" uid="uid://c6n5425o1870a" path="res://Objects/Placeables/house_blue.tscn" id="2_uskgh"]
+[ext_resource type="Resource" uid="uid://bjhoxi7pq25yc" path="res://Objects/Placeables/Tags/houses_categorical_tag.tres" id="4_4xugg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8bnb"]
+atlas = ExtResource("1_0jokv")
+region = Rect2(960, 1104, 16, 16)
+
+[resource]
+script = ExtResource("1_k8osi")
+display_name = &"Small House"
+icon = SubResource("AtlasTexture_x8bnb")
+packed_scene = ExtResource("2_uskgh")
+tags = Array[Resource]([ExtResource("4_4xugg")])
+placement_rules = Array[Resource("res://addons/grid_building/building_system/building_rules/building_rule.gd")]([])
+preview_excluded_nodes = Array[NodePath]([])
+ignore_base_rules = false
+rotateable = false
+flippable_h = false
+flippable_v = false

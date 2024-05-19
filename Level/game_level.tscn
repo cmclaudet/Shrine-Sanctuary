@@ -1,10 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://blnb3f2s67g72"]
+[gd_scene load_steps=12 format=3 uid="uid://blnb3f2s67g72"]
 
 [ext_resource type="PackedScene" uid="uid://bvaqbkcnyrelv" path="res://Characters/player.tscn" id="1_ux72s"]
 [ext_resource type="PackedScene" uid="uid://bepy0uxcgxxeu" path="res://Objects/Resources/resource_node_rock_tall.tscn" id="2_fhmkd"]
-[ext_resource type="PackedScene" uid="uid://dk3fjqkrr3r7m" path="res://UI/resource_display.tscn" id="3_44ipy"]
-[ext_resource type="PackedScene" uid="uid://byedex58qbksr" path="res://Objects/Pickups/pickup_brown_wood.tscn" id="4_5fbwv"]
-[ext_resource type="PackedScene" uid="uid://cvcpbppln51ln" path="res://UI/hotbar.tscn" id="4_ko0hj"]
 [ext_resource type="TileSet" uid="uid://cshlf35mhllki" path="res://Tilesets/main_tileset.tres" id="5_eb6ek"]
 [ext_resource type="PackedScene" uid="uid://csewi00bgdghf" path="res://Objects/Resources/resource_node_tree_pine.tscn" id="6_1scwa"]
 [ext_resource type="PackedScene" uid="uid://yq3jhf0ic4jq" path="res://Objects/Doodads/cactus_1.tscn" id="8_p1hpn"]
@@ -35,22 +32,68 @@ position = Vector2(61, 13)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_ux72s")]
+position = Vector2(61, 13)
 
-[node name="ResourceDisplay" parent="CanvasLayer" instance=ExtResource("3_44ipy")]
-metadata/_edit_lock_ = true
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
-[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("4_ko0hj")]
-metadata/_edit_lock_ = true
+[node name="WorldObjects" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Pickup_Wood" parent="." instance=ExtResource("4_5fbwv")]
-position = Vector2(124, 84)
+[node name="ResourceNode_RockTall" parent="WorldObjects" instance=ExtResource("2_fhmkd")]
+position = Vector2(70, 52)
 
-[node name="Pickup_Wood2" parent="." instance=ExtResource("4_5fbwv")]
-position = Vector2(29, 51)
+[node name="ResourceNode_RockTall2" parent="WorldObjects" instance=ExtResource("2_fhmkd")]
+position = Vector2(150, 52)
+
+[node name="ResourceNode_RockTall3" parent="WorldObjects" instance=ExtResource("2_fhmkd")]
+position = Vector2(185, 82)
+
+[node name="ResourceNode_PineTree" parent="WorldObjects" instance=ExtResource("6_1scwa")]
+position = Vector2(160, 10)
+
+[node name="ResourceNode_PineTree4" parent="WorldObjects" instance=ExtResource("6_1scwa")]
+position = Vector2(147, 99)
+
+[node name="ResourceNode_PineTree5" parent="WorldObjects" instance=ExtResource("6_1scwa")]
+position = Vector2(-20, 92)
+
+[node name="ResourceNode_PineTree6" parent="WorldObjects" instance=ExtResource("6_1scwa")]
+position = Vector2(-3, -22)
+
+[node name="ResourceNode_SavannaTree" parent="WorldObjects" instance=ExtResource("10_5uart")]
+position = Vector2(124, 197)
+
+[node name="ResourceNode_SavannaTree2" parent="WorldObjects" instance=ExtResource("10_5uart")]
+position = Vector2(228, 160)
+
+[node name="ResourceNode_SavannaTree3" parent="WorldObjects" instance=ExtResource("10_5uart")]
+position = Vector2(143, 149)
+
+[node name="Cactus1" parent="WorldObjects" instance=ExtResource("8_p1hpn")]
+material = SubResource("ShaderMaterial_34dnv")
+position = Vector2(83, 175)
+
+[node name="Cactus2" parent="WorldObjects" instance=ExtResource("8_p1hpn")]
+material = SubResource("ShaderMaterial_vlp8b")
+position = Vector2(264, 184)
+
+[node name="Cactus_Type2" parent="WorldObjects" instance=ExtResource("9_sxgm6")]
+position = Vector2(185, 130)
+
+[node name="ResourceNode_DarkTree" parent="WorldObjects" instance=ExtResource("11_uei3h")]
+position = Vector2(11, 189)
+
+[node name="ResourceNode_DarkTree2" parent="WorldObjects" instance=ExtResource("11_uei3h")]
+position = Vector2(-83, 123)
+
+[node name="ResourceNode_DarkTree3" parent="WorldObjects" instance=ExtResource("11_uei3h")]
+position = Vector2(61, 138)
+
+[node name="Placeables" type="Node2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
-z_index = -50
 y_sort_enabled = true
 tile_set = ExtResource("5_eb6ek")
 collision_animatable = true
@@ -68,62 +111,3 @@ layer_3/name = "Air Objects"
 layer_3/y_sort_enabled = true
 layer_3/z_index = 10
 layer_3/tile_data = PackedInt32Array()
-
-[node name="Player" parent="TileMap" instance=ExtResource("1_ux72s")]
-position = Vector2(61, 13)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="TileMap/Player"]
-remote_path = NodePath("../../../Camera2D")
-
-[node name="WorldObjects" type="Node2D" parent="TileMap"]
-y_sort_enabled = true
-
-[node name="ResourceNode_RockTall" parent="TileMap/WorldObjects" instance=ExtResource("2_fhmkd")]
-position = Vector2(70, 52)
-
-[node name="ResourceNode_RockTall2" parent="TileMap/WorldObjects" instance=ExtResource("2_fhmkd")]
-position = Vector2(150, 52)
-
-[node name="ResourceNode_RockTall3" parent="TileMap/WorldObjects" instance=ExtResource("2_fhmkd")]
-position = Vector2(185, 82)
-
-[node name="ResourceNode_PineTree" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
-position = Vector2(160, 10)
-
-[node name="ResourceNode_PineTree4" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
-position = Vector2(147, 99)
-
-[node name="ResourceNode_PineTree5" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
-position = Vector2(-20, 92)
-
-[node name="ResourceNode_PineTree6" parent="TileMap/WorldObjects" instance=ExtResource("6_1scwa")]
-position = Vector2(-3, -22)
-
-[node name="ResourceNode_SavannaTree" parent="TileMap/WorldObjects" instance=ExtResource("10_5uart")]
-position = Vector2(124, 197)
-
-[node name="ResourceNode_SavannaTree2" parent="TileMap/WorldObjects" instance=ExtResource("10_5uart")]
-position = Vector2(228, 160)
-
-[node name="ResourceNode_SavannaTree3" parent="TileMap/WorldObjects" instance=ExtResource("10_5uart")]
-position = Vector2(143, 149)
-
-[node name="Cactus1" parent="TileMap/WorldObjects" instance=ExtResource("8_p1hpn")]
-material = SubResource("ShaderMaterial_34dnv")
-position = Vector2(83, 175)
-
-[node name="Cactus2" parent="TileMap/WorldObjects" instance=ExtResource("8_p1hpn")]
-material = SubResource("ShaderMaterial_vlp8b")
-position = Vector2(264, 184)
-
-[node name="Cactus_Type2" parent="TileMap/WorldObjects" instance=ExtResource("9_sxgm6")]
-position = Vector2(185, 130)
-
-[node name="ResourceNode_DarkTree" parent="TileMap/WorldObjects" instance=ExtResource("11_uei3h")]
-position = Vector2(11, 189)
-
-[node name="ResourceNode_DarkTree2" parent="TileMap/WorldObjects" instance=ExtResource("11_uei3h")]
-position = Vector2(-83, 123)
-
-[node name="ResourceNode_DarkTree3" parent="TileMap/WorldObjects" instance=ExtResource("11_uei3h")]
-position = Vector2(61, 138)

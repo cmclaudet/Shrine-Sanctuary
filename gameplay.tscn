@@ -1,0 +1,127 @@
+[gd_scene load_steps=24 format=3 uid="uid://v54hx1o4tx25"]
+
+[ext_resource type="Script" path="res://addons/grid_building/grid_targeting_system/grid_targeting_system.gd" id="1_7epip"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_system.gd" id="2_quncr"]
+[ext_resource type="PackedScene" uid="uid://l00rt6twodlt" path="res://addons/grid_building/building_system/rule_check_indicator/rule_check_indicator_16x16.tscn" id="3_cfhqv"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/placement_validator.gd" id="4_kbjjm"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/template_rules/collisions_check_rule.gd" id="4_lhdis"]
+[ext_resource type="PackedScene" uid="uid://blnb3f2s67g72" path="res://Level/game_level.tscn" id="5_d2evp"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/template_rules/within_tilemap_bounds_rule.gd" id="5_swpv1"]
+[ext_resource type="Shader" path="res://Objects/Resources/outline.gdshader" id="6_2tc53"]
+[ext_resource type="Resource" uid="uid://dhn50nkfn58tc" path="res://SignalBus/building_signal_bus.tres" id="6_jtu0w"]
+[ext_resource type="PackedScene" uid="uid://erm78oe3trac" path="res://addons/grid_building/ui/placement_selection/placeable_selection_ui.tscn" id="8_tid3g"]
+[ext_resource type="Resource" uid="uid://bjhoxi7pq25yc" path="res://Objects/Placeables/Tags/houses_categorical_tag.tres" id="9_gtns7"]
+[ext_resource type="PackedScene" uid="uid://b85csecsg3tsa" path="res://addons/grid_building/grid_targeting_system/grid_targeter/grid_targeter.tscn" id="9_k8l2h"]
+[ext_resource type="Resource" uid="uid://btueq54ga88nw" path="res://Objects/Placeables/house_blue.tres" id="10_25go8"]
+[ext_resource type="PackedScene" uid="uid://dk3fjqkrr3r7m" path="res://UI/resource_display.tscn" id="12_rdsm6"]
+[ext_resource type="PackedScene" uid="uid://cvcpbppln51ln" path="res://UI/hotbar.tscn" id="13_ggmsi"]
+[ext_resource type="PackedScene" uid="uid://bui0pc2uo57iu" path="res://addons/grid_building/ui/game_log/build_log.tscn" id="16_atiwq"]
+
+[sub_resource type="Resource" id="Resource_jo6xd"]
+script = ExtResource("4_lhdis")
+pass_on_collision = false
+collision_mask = 1
+success_message = "No placement collisions found"
+expected_no_collisions_message = "Must have no collisions"
+expected_collisions_message = "Must overlap "
+prepend_resource_name = false
+append_layer_names = false
+layers_tested_prefix = " : Layers Checked: "
+no_indicators_message = "No tile collision indicators to check for collisions in placement"
+apply_to_objects_mask = 1
+visual_priority = 0
+
+[sub_resource type="Resource" id="Resource_0mqt8"]
+script = ExtResource("5_swpv1")
+success_message = "Placement is within map bounds"
+failed_message = "Tried placing outside of valid map area"
+no_indicators_message = "No tile collision indicators to check for within tilemap bounds."
+apply_to_objects_mask = 1
+visual_priority = 0
+
+[sub_resource type="Resource" id="Resource_3vee6"]
+script = ExtResource("4_kbjjm")
+base_rules = Array[Resource("res://addons/grid_building/building_system/building_rules/building_rule.gd")]([SubResource("Resource_jo6xd"), SubResource("Resource_0mqt8")])
+all_succeeded_message = "All building placement validation checks passed"
+failed_validations_message = "--- Rules Failed ---"
+failed_message_base = "Failed Placement"
+show_debug_shapes = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34dnv"]
+resource_local_to_scene = true
+shader = ExtResource("6_2tc53")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlp8b"]
+resource_local_to_scene = true
+shader = ExtResource("6_2tc53")
+shader_parameter/onoff = 0.0
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="Gradient" id="Gradient_m4kw5"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kd1j0"]
+gradient = SubResource("Gradient_m4kw5")
+
+[node name="Gameplay" type="Node"]
+
+[node name="GridTargetingSystem" type="Node" parent="." node_paths=PackedStringArray("positioner", "tilemap")]
+script = ExtResource("1_7epip")
+positioner = NodePath("../World/GridTargeter")
+tilemap = NodePath("../World/GameLevel/TileMap")
+
+[node name="BuildingSystem" type="Node" parent="." node_paths=PackedStringArray("placer", "positioner", "tilemap", "placed_objects_parent")]
+script = ExtResource("2_quncr")
+placer = NodePath("../World/GameLevel/Camera2D")
+positioner = NodePath("../World/GridTargeter")
+tilemap = NodePath("../World/GameLevel/TileMap")
+placed_objects_parent = NodePath("../World/GameLevel/Placeables")
+rule_check_indicator_template = ExtResource("3_cfhqv")
+placement_validator = SubResource("Resource_3vee6")
+building_signal_bus = ExtResource("6_jtu0w")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="GameLevel" parent="World" instance=ExtResource("5_d2evp")]
+
+[node name="Cactus1" parent="World/GameLevel/WorldObjects" index="10"]
+material = SubResource("ShaderMaterial_34dnv")
+
+[node name="Cactus2" parent="World/GameLevel/WorldObjects" index="11"]
+material = SubResource("ShaderMaterial_vlp8b")
+
+[node name="TileMap" parent="World/GameLevel" index="4"]
+layer_2/tile_data = PackedInt32Array(327684, 10, 0, 8, 10, 0, -196599, 10, 0, -196606, 10, 0, 196605, 10, 0, 65534, 10, 0, 131070, 10, 0, 65543, 10, 0, -196618, 1835017, 4, -131082, 1835017, 4, -65546, 1835017, 4, -10, 1835017, 4, 65526, 1835017, 4, 131062, 1835017, 4, 196598, 1835017, 4, 262134, 1835017, 4, 327670, 1835017, 4, 393206, 1835017, 4, 458742, 1835017, 4, 524278, 1835017, 4, 589814, 1835017, 4, 655350, 1835017, 4, 720886, 1835017, 4, 786422, 1835017, 4, 851958, 1835017, 4, 917494, 1835017, 4, 983030, 1835017, 4, -458756, 1835017, 7, -458754, 1835017, 7, -393218, 1835017, 9, -458752, 1835017, 9, -458750, 1835017, 9, -458748, 1835017, 9, -458746, 1835017, 9, -458744, 1835017, 9, -524288, 1835017, 7, -524286, 1835017, 7, -524284, 1835017, 7, -524282, 1835017, 7, -524280, 1835017, 7, -524278, 1835017, 7, -524276, 1835017, 7, -524274, 1835017, 7, -524272, 1835017, 7, -524270, 1835017, 7, -458742, 1835017, 9, -458740, 1835017, 9, -458738, 1835017, 9, -458736, 1835017, 9, -458734, 1835017, 9, -393220, 1835017, 9, -393222, 1835017, 9, -393224, 1835017, 9, -458758, 1835017, 7, -458760, 1835017, 7, -458762, 1835017, 7, -458764, 1835017, 7, -458766, 1835017, 7, -458768, 1835017, 7, -589821, 1835017, 7, -589819, 1835017, 7, -589817, 1835017, 7, -589815, 1835017, 7, -589813, 1835017, 7, -589811, 1835017, 7, -589809, 1835017, 7, -589807, 1835017, 7, -589805, 1835017, 7, -589823, 1835017, 7, -524289, 1835017, 7, -524291, 1835017, 7, -524293, 1835017, 7, -524295, 1835017, 7, -524297, 1835017, 7, -524299, 1835017, 7, -524301, 1835017, 7, -524303, 1835017, 7, -393226, 1835017, 4, -393228, 1835017, 9, -393230, 1835017, 9, -262154, 1835017, 4, -327690, 1835017, 4, -524268, 1835017, 7, -524266, 1835017, 7, -524264, 1835017, 7, -524262, 1835017, 7, -524260, 1835017, 7, -458732, 1835017, 9, -458730, 1835017, 9, -458728, 1835017, 9, -458726, 1835017, 9, -458724, 1835017, 9, -589803, 1835017, 7, -589801, 1835017, 7, -589799, 1835017, 7, -589797, 1835017, 7, -589795, 1835017, 7, 1048566, 1835017, 6, -131074, 10, 0, -131077, 11, 65536)
+
+[node name="GridTargeter" parent="World" instance=ExtResource("9_k8l2h")]
+frame_progress = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlaceableSelectionUI" parent="CanvasLayer" node_paths=PackedStringArray("building_system") instance=ExtResource("8_tid3g")]
+building_system = NodePath("../../BuildingSystem")
+open_actions = Array[StringName]([&"build_menu"])
+category_tags = Array[Resource("res://addons/grid_building/categorical_tag.gd")]([ExtResource("9_gtns7")])
+placeables = Array[Resource("res://addons/grid_building/building_system/placeable/placeable.gd")]([ExtResource("10_25go8")])
+
+[node name="ResourceDisplay" parent="CanvasLayer" instance=ExtResource("12_rdsm6")]
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("13_ggmsi")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_vertical = 0
+
+[node name="GameLog" parent="CanvasLayer" instance=ExtResource("16_atiwq")]
+building_signal_bus = ExtResource("6_jtu0w")
+
+[node name="NinePatchRect" parent="CanvasLayer/GameLog" index="0"]
+self_modulate = Color(1, 1, 1, 0.364706)
+texture = SubResource("GradientTexture1D_kd1j0")
+
+[editable path="World/GameLevel"]
+[editable path="CanvasLayer/GameLog"]

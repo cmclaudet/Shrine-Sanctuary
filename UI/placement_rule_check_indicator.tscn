@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnvvftemrnruf"]
+
+[ext_resource type="PackedScene" uid="uid://l00rt6twodlt" path="res://addons/grid_building/building_system/rule_check_indicator/rule_check_indicator_16x16.tscn" id="1_tr2mo"]
+
+[node name="RuleCheckIndicator_16x16" instance=ExtResource("1_tr2mo")]
+collision_mask = 513
