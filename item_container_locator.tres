@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NodeLocator" load_steps=2 format=3 uid="uid://beiaoy5yfkjjw"]
+
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/template_rules/resources/node_locator.gd" id="1_onw6l"]
+
+[resource]
+script = ExtResource("1_onw6l")
+method = 0
+search_string = "ItemContainer"

@@ -1,13 +1,27 @@
-[gd_resource type="Resource" script_class="Placeable" load_steps=6 format=3 uid="uid://btueq54ga88nw"]
+[gd_resource type="Resource" script_class="Placeable" load_steps=12 format=3 uid="uid://btueq54ga88nw"]
 
 [ext_resource type="Texture2D" uid="uid://b4y1mmcvsfyrx" path="res://Art/Gif/original_atlas.png" id="1_0jokv"]
 [ext_resource type="Script" path="res://addons/grid_building/building_system/placeable/placeable.gd" id="1_k8osi"]
 [ext_resource type="PackedScene" uid="uid://c6n5425o1870a" path="res://Objects/Placeables/house_blue.tscn" id="2_uskgh"]
+[ext_resource type="Resource" uid="uid://beiaoy5yfkjjw" path="res://item_container_locator.tres" id="3_nti1b"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/template_rules/resources/resource_stack.gd" id="4_4a7lt"]
 [ext_resource type="Resource" uid="uid://bjhoxi7pq25yc" path="res://Objects/Placeables/Tags/houses_categorical_tag.tres" id="4_4xugg"]
+[ext_resource type="Resource" uid="uid://cu7pue5qyyxgl" path="res://Items/Currency/wood_currency.tres" id="5_6fm5l"]
+[ext_resource type="Script" path="res://addons/grid_building/building_system/building_rules/template_rules/spend_materials_rule_generic.gd" id="6_wvnpp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8bnb"]
 atlas = ExtResource("1_0jokv")
 region = Rect2(960, 1104, 16, 16)
+
+[sub_resource type="Resource" id="Resource_usefb"]
+script = ExtResource("4_4a7lt")
+type = ExtResource("5_6fm5l")
+count = 3
+
+[sub_resource type="Resource" id="Resource_t4xwg"]
+script = ExtResource("6_wvnpp")
+resource_stacks_to_spend = Array[ExtResource("4_4a7lt")]([SubResource("Resource_usefb")])
+locator = ExtResource("3_nti1b")
 
 [resource]
 script = ExtResource("1_k8osi")
@@ -15,7 +29,7 @@ display_name = &"Small House"
 icon = SubResource("AtlasTexture_x8bnb")
 packed_scene = ExtResource("2_uskgh")
 tags = Array[Resource]([ExtResource("4_4xugg")])
-placement_rules = Array[Resource("res://addons/grid_building/building_system/building_rules/building_rule.gd")]([])
+placement_rules = Array[Resource("res://addons/grid_building/building_system/building_rules/building_rule.gd")]([SubResource("Resource_t4xwg")])
 preview_excluded_nodes = Array[NodePath]([])
 ignore_base_rules = false
 rotateable = false

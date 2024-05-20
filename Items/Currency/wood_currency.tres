@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=2 format=3 uid="uid://cu7pue5qyyxgl"]
+
+[ext_resource type="Script" path="res://addons/grid_building_inventory/items/base_item.gd" id="1_mrw8o"]
+
+[resource]
+script = ExtResource("1_mrw8o")
+display_name = "Wood"
+tags = Array[Resource]([])
+stack_maximum = 1000

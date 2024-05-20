@@ -92,6 +92,7 @@ position = Vector2(-83, 123)
 position = Vector2(61, 138)
 
 [node name="Placeables" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
