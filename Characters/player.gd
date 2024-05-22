@@ -6,6 +6,7 @@ class_name Player
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var interaction_area2D : InteractionArea2D = $InteractionArea2D
+@onready var hand_equip : HandEquip = $HandEquip
 
 var direction : Vector2 = Vector2.ZERO
 var can_move : bool = true
@@ -67,6 +68,5 @@ func are_node_types_compatible(interactable_node_types : Array[ResourceNodeType]
 	for node_type in interactable_node_types:
 		if item_node_types.has(node_type):
 			canHarvest = true
-			print_debug("node compatible!")
 			break
 	return canHarvest

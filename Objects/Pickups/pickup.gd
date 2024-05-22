@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Pickup
 
-@export var resource_type : Resource
+@export var item : Item
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
 var launch_velocity : Vector2 = Vector2.ZERO
@@ -36,8 +36,11 @@ func launch(velocity : Vector2, duration : float):
 	launching = true
 
 func _on_body_entered(body : Node2D):
-	var inventory = body.find_child("Inventory")
+	if(body.name == "Player"):	
+		var inventory = GameManager.inventory
 	
-	if(inventory):
-		inventory.add_resources(resource_type, 1)
-		queue_free()
+		if(inventory):
+			var amount_to_add = 1
+			var overflow = inventory.add_resources(item, amount_to_add)
+			if(overflow == 0):
+				queue_free()

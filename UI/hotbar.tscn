@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvcpbppln51ln"]
+[gd_scene load_steps=9 format=3 uid="uid://cvcpbppln51ln"]
 
 [ext_resource type="Script" path="res://UI/hotbar.gd" id="1_78l7d"]
 [ext_resource type="Texture2D" uid="uid://bvqsbij42673l" path="res://Art/GatherersExterior/Tools/hammer_copper.png" id="2_n4gld"]
@@ -7,6 +7,9 @@
 [ext_resource type="Resource" uid="uid://bx2y3c064ls84" path="res://Items/copper_pickaxe.tres" id="4_kh2f2"]
 [ext_resource type="Resource" uid="uid://cbp7j3acw34p5" path="res://Items/copper_axe.tres" id="5_rhko1"]
 [ext_resource type="Resource" uid="uid://btgqao8lh4ubq" path="res://Items/copper_hammer.tres" id="7_0shbo"]
+
+[sub_resource type="Theme" id="Theme_08ovg"]
+default_font_size = 8
 
 [node name="Hotbar" type="Control"]
 layout_mode = 3
@@ -34,17 +37,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemButton" parent="GridContainer" instance=ExtResource("2_n5buk")]
 layout_mode = 2
+theme = SubResource("Theme_08ovg")
 icon = ExtResource("3_piiek")
 item = ExtResource("4_kh2f2")
+amount = 1
 
 [node name="ItemButton2" parent="GridContainer" instance=ExtResource("2_n5buk")]
 layout_mode = 2
 item = ExtResource("5_rhko1")
+amount = 1
 
 [node name="ItemButton3" parent="GridContainer" instance=ExtResource("2_n5buk")]
 layout_mode = 2
 icon = ExtResource("2_n4gld")
 item = ExtResource("7_0shbo")
+amount = 1
 
 [node name="ItemButton4" parent="GridContainer" instance=ExtResource("2_n5buk")]
 layout_mode = 2

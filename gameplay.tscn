@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://v54hx1o4tx25"]
+[gd_scene load_steps=29 format=3 uid="uid://v54hx1o4tx25"]
 
 [ext_resource type="Script" path="res://addons/grid_building/grid_targeting_system/grid_targeting_system.gd" id="1_7epip"]
 [ext_resource type="Script" path="res://addons/grid_building/building_system/building_system.gd" id="2_quncr"]
@@ -15,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://btueq54ga88nw" path="res://Objects/Placeables/house_blue.tres" id="10_25go8"]
 [ext_resource type="Script" path="res://addons/grid_building_inventory/inventory/item_container.gd" id="11_thqeo"]
 [ext_resource type="Script" path="res://addons/grid_building_inventory/items/base_item_stack.gd" id="12_q2mwu"]
-[ext_resource type="PackedScene" uid="uid://dk3fjqkrr3r7m" path="res://UI/resource_display.tscn" id="12_rdsm6"]
 [ext_resource type="PackedScene" uid="uid://cvcpbppln51ln" path="res://UI/hotbar.tscn" id="13_ggmsi"]
 [ext_resource type="Resource" uid="uid://cu7pue5qyyxgl" path="res://Items/Currency/wood_currency.tres" id="13_u41fe"]
 [ext_resource type="PackedScene" uid="uid://bui0pc2uo57iu" path="res://addons/grid_building/ui/game_log/build_log.tscn" id="16_atiwq"]
@@ -131,8 +130,6 @@ open_actions = Array[StringName]([&"build_menu"])
 category_tags = Array[Resource("res://addons/grid_building/categorical_tag.gd")]([ExtResource("9_gtns7")])
 placeables = Array[Resource("res://addons/grid_building/building_system/placeable/placeable.gd")]([ExtResource("10_25go8")])
 
-[node name="ResourceDisplay" parent="CanvasLayer" instance=ExtResource("12_rdsm6")]
-
 [node name="Hotbar" parent="CanvasLayer" instance=ExtResource("13_ggmsi")]
 anchors_preset = 12
 anchor_top = 1.0
@@ -162,5 +159,8 @@ offset_bottom = 134.0
 theme = SubResource("Theme_d6lxv")
 text = "This is some test text."
 
+[connection signal="resource_count_changed" from="World/GameLevel/Player/Inventory" to="CanvasLayer/Hotbar" method="_on_inventory_resource_count_changed"]
+
 [editable path="World/GameLevel"]
+[editable path="World/GameLevel/Player"]
 [editable path="CanvasLayer/GameLog"]

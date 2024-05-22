@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5x1g76j5b3hy"]
+[gd_scene load_steps=3 format=3 uid="uid://cmmx1o4jg33g3"]
 
 [ext_resource type="Script" path="res://UI/ResourceItemDisplay.gd" id="1_nggv7"]
 [ext_resource type="Texture2D" uid="uid://q2wnoyr2qprg" path="res://Art/GatherersExterior/Resources/coin_copper.png" id="2_6f55o"]

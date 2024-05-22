@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cma8vwsj5k0hm"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_42ndf"]
+[ext_resource type="Texture2D" uid="uid://c3slv5s86pyef" path="res://Art/GatherersExterior/Resources/rock_item.png" id="2_umvy8"]
+
+[resource]
+script = ExtResource("1_42ndf")
+id = "rock"
+max_amount = 99
+display_name = "Rock"
+texture = ExtResource("2_umvy8")

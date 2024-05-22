@@ -7,5 +7,7 @@
 [resource]
 script = ExtResource("1_27hxe")
 effected_types = Array[Resource("res://Objects/Resources/Types/resource_node_type.gd")]([ExtResource("1_bny6d")])
+id = "copper_pickaxe"
+max_amount = 99
 display_name = "Copper Pickaxe"
 texture = ExtResource("2_7g0f4")
