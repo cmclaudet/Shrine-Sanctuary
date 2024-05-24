@@ -1,5 +1,5 @@
 extends Node
 
 @onready var player : Player = get_node("/root/Gameplay/World/GameLevel/Player")
-@onready var inventory : Inventory = get_node("/root/Gameplay/World/GameLevel/Player/Inventory")# get_tree().get_root().find_node("Inventory")
+@onready var inventory : Inventory = get_node("/root/Gameplay/World/GameLevel/Player/Inventory")
 

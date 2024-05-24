@@ -42,3 +42,33 @@ func add_resources(item : Item, amount : int) -> int:
 
 	emit_signal("resource_count_changed", item, successfully_added)
 	return amount_to_add
+
+func remove_resources(item : Item, amount : int) -> int:
+	print("remove resources: " + str(amount) + " " + item.id)
+	var amount_to_remove : int = amount
+	for slot in inventory_slots:
+		if(slot.item == null):
+			continue
+		if(slot.item.id != item.id):
+			continue
+		amount_to_remove = slot.try_remove_amount(amount_to_remove)
+		if(amount_to_remove == 0):
+			break
+
+	if amount_to_remove > 0:
+		print("Could not remove all resources from inventory, remaining: " + str(amount_to_remove) + " " + item.id)
+
+	var successfully_removed = amount - amount_to_remove
+
+	emit_signal("resource_count_changed", item, -successfully_removed)
+	return amount_to_remove
+
+func get_resource_count(item : Item) -> int:
+	var count : int = 0
+	for slot in inventory_slots:
+		if(slot.item == null):
+			continue
+		if(slot.item.id != item.id):
+			continue
+		count += slot.amount
+	return count

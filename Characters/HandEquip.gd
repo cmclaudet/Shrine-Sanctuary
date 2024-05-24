@@ -9,7 +9,7 @@ signal on_tool_contact_signal(equipped_item : EquipableItem)
 	set(next_equipped):
 		equipped_item = next_equipped
 		if(next_equipped != null):
-			self.texture = next_equipped.texture
+			self.texture = next_equipped.icon
 		else:
 			self.texture = null
 
