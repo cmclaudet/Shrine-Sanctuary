@@ -13,10 +13,10 @@
 [ext_resource type="Resource" uid="uid://bjhoxi7pq25yc" path="res://Objects/Placeables/Tags/houses_categorical_tag.tres" id="9_gtns7"]
 [ext_resource type="PackedScene" uid="uid://b85csecsg3tsa" path="res://addons/grid_building/grid_targeting_system/grid_targeter/grid_targeter.tscn" id="9_k8l2h"]
 [ext_resource type="Resource" uid="uid://btueq54ga88nw" path="res://Objects/Placeables/house_blue.tres" id="10_25go8"]
+[ext_resource type="Resource" uid="uid://b87jef3ka8ncj" path="res://Items/Resources/item_wood.tres" id="11_q0xot"]
 [ext_resource type="Script" path="res://addons/grid_building_inventory/inventory/item_container.gd" id="11_thqeo"]
 [ext_resource type="Script" path="res://addons/grid_building_inventory/items/base_item_stack.gd" id="12_q2mwu"]
 [ext_resource type="PackedScene" uid="uid://cvcpbppln51ln" path="res://UI/hotbar.tscn" id="13_ggmsi"]
-[ext_resource type="Resource" uid="uid://cu7pue5qyyxgl" path="res://Items/Currency/wood_currency.tres" id="13_u41fe"]
 [ext_resource type="PackedScene" uid="uid://bui0pc2uo57iu" path="res://addons/grid_building/ui/game_log/build_log.tscn" id="16_atiwq"]
 
 [sub_resource type="Resource" id="Resource_jo6xd"]
@@ -49,11 +49,10 @@ failed_validations_message = "--- Rules Failed ---"
 failed_message_base = "Failed Placement"
 show_debug_shapes = false
 
-[sub_resource type="Resource" id="Resource_e8hdq"]
-resource_name = "Wood"
+[sub_resource type="Resource" id="Resource_r4hoe"]
 script = ExtResource("12_q2mwu")
-type = ExtResource("13_u41fe")
-count = 10
+type = ExtResource("11_q0xot")
+count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_34dnv"]
 resource_local_to_scene = true
@@ -103,7 +102,7 @@ building_signal_bus = ExtResource("6_jtu0w")
 
 [node name="ItemContainer" type="Node" parent="World/GameLevel/Player" index="8"]
 script = ExtResource("11_thqeo")
-_slots = Array[ExtResource("12_q2mwu")]([SubResource("Resource_e8hdq")])
+_slots = Array[ExtResource("12_q2mwu")]([SubResource("Resource_r4hoe")])
 
 [node name="Cactus1" parent="World/GameLevel/WorldObjects" index="10"]
 material = SubResource("ShaderMaterial_34dnv")

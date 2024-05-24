@@ -15,7 +15,7 @@ class_name BaseItem
 @export var tags : Array[Resource]
 
 ## The maximum number of a material that can exist in one item_stack
-@export var stack_maximum : int = 1
+@export var stack_maximum : int = 99
 
 func _init(p_display_name : String = "", p_icon : Texture2D = null, 
 p_tags : Array[Resource] = [], p_stack_maximum : int = 1):

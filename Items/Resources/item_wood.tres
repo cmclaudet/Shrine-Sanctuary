@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_uceuq")
 id = "wood"
-max_amount = 99
 display_name = "Wood"
-texture = ExtResource("2_xui5c")
+icon = ExtResource("2_xui5c")
+tags = Array[Resource]([])
+stack_maximum = 99

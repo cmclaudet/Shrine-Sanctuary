@@ -7,6 +7,7 @@
 script = ExtResource("2_prln7")
 effected_types = Array[Resource("res://Objects/Resources/Types/resource_node_type.gd")]([])
 id = ""
-max_amount = 99
 display_name = "Copper Hammer"
-texture = ExtResource("2_v8yq4")
+icon = ExtResource("2_v8yq4")
+tags = Array[Resource]([])
+stack_maximum = 99

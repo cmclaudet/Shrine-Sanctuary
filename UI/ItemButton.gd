@@ -9,7 +9,7 @@ class_name ItemButton
 		if(item == null):
 			icon = null
 		else:
-			icon = item.texture
+			icon = item.icon
 
 @export var amount_label : Label
 

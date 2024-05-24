@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_42ndf")
 id = "rock"
-max_amount = 99
 display_name = "Rock"
-texture = ExtResource("2_umvy8")
+icon = ExtResource("2_umvy8")
+tags = Array[Resource]([])
+stack_maximum = 99

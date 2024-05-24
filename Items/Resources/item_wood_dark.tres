@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_kf7j0")
 id = "wood_dark"
-max_amount = 99
 display_name = "Dark Wood"
-texture = ExtResource("2_m60js")
+icon = ExtResource("2_m60js")
+tags = Array[Resource]([])
+stack_maximum = 99
