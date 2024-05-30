@@ -8,7 +8,7 @@ region = Rect2(1296, 448, 64, 64)
 margin = Rect2(2, 2, 4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6q5b"]
-size = Vector2(58, 30)
+size = Vector2(58, 22)
 
 [node name="HouseBlue" type="StaticBody2D"]
 
@@ -17,5 +17,5 @@ position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_mhd7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_n6q5b")
